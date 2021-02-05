@@ -32,7 +32,7 @@ $(function () {
             imageDom.width = 800;
             imageDom.height = 600;
         
-            var color = ['#FF1818','#FF6CCD', '#FF8F28', "#FFE86F", "#48EFC0"];
+            var color = ['#FF1818','#FF6CCD', '#FF8F28', "#FFE86F", "#48EFC0","#61C6FF"];
             
             var series = [{
                 type: 'map',
@@ -215,8 +215,10 @@ $(function () {
                     border:0,
                     formatter:  params =>  {
                         if (params.data && params.data.name) {
-                            var str = `<div class="toop"><div class="bg"><p>${ params.data.value[2]}</p><p>${params.data.name}</p></div></div>`;
-                            return str;
+                            if(params.data.name !=='上海'){
+                                var str = `<div class="toop"><div class="bg"><p>${ params.data.value[2]}</p><p style="color:${params.color}">${params.data.name}</p></div></div>`;
+                                return str;
+                            }
                         }
                     }
                 },
@@ -302,7 +304,7 @@ $(function () {
                             // borderColor: '#0177ff'
                         },
                         emphasis: {
-                            // areaColor: 'transparent', //悬浮区背景
+                            areaColor: 'transparent', //悬浮区背景
                         }
                     }
                 }],
